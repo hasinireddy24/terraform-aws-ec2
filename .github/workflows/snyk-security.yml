@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: snyk/actions/setup@master
+
       - name: Run Snyk to check Kubernetes manifest file for issues
         uses: snyk/actions/iac@master
         continue-on-error: true
@@ -21,8 +23,7 @@ jobs:
       - name: ls
         run: ls
         
-      - name: Install Snyk CLI
-      - uses: snyk/actions/setup@master
+      
         
       # Add a step to save the Snyk scan results in SARIF format
       - name: Save Snyk scan results as SARIF
