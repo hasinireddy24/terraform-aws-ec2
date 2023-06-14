@@ -25,17 +25,9 @@ jobs:
         
       
         
-      # Add a step to save the Snyk scan results in SARIF format
-      - name: Save Snyk scan results as SARIF
-        env:
-           SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
-        run: snyk iac test --all-projects > snyk.sarif.tmp && mv snyk.sarif.tmp snyk.sarif
-
-      # Check if the SARIF file exists before uploading
-      - name: Check SARIF file
-        run: ls snyk.sarif
+      
       
       - name: Upload result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v1
+        uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: snyk.sarif
