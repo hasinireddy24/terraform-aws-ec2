@@ -26,7 +26,7 @@ jobs:
       - name: Save Snyk scan results as SARIF
         env:
            SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
-        run: snyk iac test --all-projects --sarif-output=snyk.sarif
+        run: snyk iac test --all-projects > snyk.sarif.tmp && mv snyk.sarif.tmp snyk.sarif
 
       # Check if the SARIF file exists before uploading
       - name: Check SARIF file
