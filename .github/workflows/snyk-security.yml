@@ -18,6 +18,10 @@ jobs:
       - name: Run Snyk to check Kubernetes manifest file for issues
         uses: snyk/actions/iac@master
         continue-on-error: true
+        with:
+          command: test
+          json: false
+          sarif: true
         env:
           SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
       - name: ls
