@@ -22,7 +22,7 @@ jobs:
         run: ls
         
       - name: Install Snyk CLI
-        run: npm install -g snyk
+      - uses: snyk/actions/setup@master
         
       # Add a step to save the Snyk scan results in SARIF format
       - name: Save Snyk scan results as SARIF
