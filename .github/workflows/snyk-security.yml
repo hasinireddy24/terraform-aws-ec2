@@ -57,6 +57,7 @@ jobs:
       
       - run: |
            ls
+           pwd
            cat snyk.sarif
            
         # Push the Snyk Code results into GitHub Code Scanning tab
