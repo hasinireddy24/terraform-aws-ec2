@@ -24,8 +24,11 @@ jobs:
           sarif: true
         env:
           SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
-      - name: ls
-        run: ls
+      
+      - name: Print working directory
+        run: |
+          echo "Working Directory: $PWD"
+          ls
     
       - uses: github/codeql-action/upload-sarif@v2
         with:
