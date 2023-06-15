@@ -25,11 +25,10 @@ jobs:
         env:
           SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
       
-      - name: Print working directory
+      - name: Print SARIF file path
         run: |
-          echo "Working Directory: $PWD"
-          ls
-    
+          echo "SARIF File Path: ${{ steps.snyk-run.outputs.sarif_file }}"
+
       - uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: snyk.sarif
+          sarif_file: ${{ steps.snyk-run.outputs.sarif_file }}
