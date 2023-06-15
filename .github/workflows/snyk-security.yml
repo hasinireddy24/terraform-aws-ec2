@@ -45,9 +45,7 @@ jobs:
         # Runs Snyk Infrastructure as Code (IaC) analysis and uploads result to Snyk.
         # Use || true to not fail the pipeline.
       - name: Snyk IaC test and report
-        run: snyk iac test --report  || true
-          --output-file synk-results.sarif
-          
+        run: snyk iac test --report --output-file synk-results.sarif || true      
         env:
           # This is where you will need to introduce the Snyk API token created with your Snyk account
           SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
