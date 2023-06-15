@@ -50,13 +50,14 @@ jobs:
       
       - name: Snyk IaC test and report
         run: |
-          snyk iac test --report || true > synk-results.json
+          snyk iac test --report || true > snyk.json
         env:
           # This is where you will need to introduce the Snyk API token created with your Snyk account
           SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
       
-      - run: | 
-           cat synk-results.json
+      - run: |
+           ls
+           cat snyk.json
            
       - uses: garethr/snyk-to-sarif@master
       - uses: actions/upload-artifact@v2
@@ -68,4 +69,4 @@ jobs:
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: synk-results.sarif
+          sarif_file: synk.sarif
