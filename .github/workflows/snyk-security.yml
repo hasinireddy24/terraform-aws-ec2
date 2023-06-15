@@ -27,6 +27,8 @@ jobs:
           SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
       
       - uses: garethr/snyk-to-sarif@master
+        with:
+          input: snyk.json
       - uses: actions/upload-artifact@v2
         with:
           name: SARIF
