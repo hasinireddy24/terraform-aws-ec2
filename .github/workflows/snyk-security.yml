@@ -21,7 +21,7 @@ jobs:
         continue-on-error: true
         with:
           command: test
-          json: true
+          json: false
           sarif: true
         env:
           SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
