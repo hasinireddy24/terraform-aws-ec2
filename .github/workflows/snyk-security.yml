@@ -17,6 +17,7 @@ jobs:
 
       - name: Run Snyk to check Kubernetes manifest file for issues
         uses: snyk/actions/iac@master
+        id: snyk-run
         continue-on-error: true
         with:
           command: test
