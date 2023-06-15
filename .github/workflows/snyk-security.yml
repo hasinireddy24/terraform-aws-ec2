@@ -21,15 +21,17 @@ jobs:
         continue-on-error: true
         with:
           command: test
-          json: false
+          json: true
           sarif: true
         env:
           SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
       
-      - name: Print SARIF file path
-        run: |
-          echo "SARIF File Path: ${{ steps.snyk-run.outputs.snyk.sarif }}"
-
-      - uses: github/codeql-action/upload-sarif@v2
+      - uses: garethr/snyk-to-sarif@master
+      - uses: actions/upload-artifact@v2
         with:
-          sarif_file: ${{ steps.snyk-run.outputs.snyk.sarif }}
+          name: SARIF
+          path: snyk.sarif
+      - name: Upload the SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: snyk.sarif
