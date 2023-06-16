@@ -16,7 +16,7 @@ jobs:
       - uses: snyk/actions/setup@master
 
       - name: Run Snyk Code
-        run: snyk code test --sarif=snyk-code-report.sarif
+        run: snyk iac test --sarif=snyk-code-report.sarif
         env:
           SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
          
