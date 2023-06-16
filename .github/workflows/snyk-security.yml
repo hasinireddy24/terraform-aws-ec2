@@ -26,9 +26,14 @@ jobs:
         env:
           SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
           
-      - run: |
-          ls -al
-          pwd
+      - name: Check SARIF file existence
+        run: |
+          if [ -f "${{ steps.snyk-run.outputs.sarif }}" ]; then
+            echo "SARIF file exists."
+          else
+            echo "SARIF file does not exist."
+            exit 1
+          fi
           
       
          
