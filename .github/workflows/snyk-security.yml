@@ -17,7 +17,7 @@ jobs:
 
       - name: Run Snyk Code
         continue-on-error: true
-        run: snyk iac test --sarif=snyk-code-report.sarif
+        run: snyk iac test --sarif=snyk-code-report.sarif > snyk-code-report.sarif
         env:
           SNYK_TOKEN: "bd232314-6d92-48dd-a7e8-1add00d92be0"
        
