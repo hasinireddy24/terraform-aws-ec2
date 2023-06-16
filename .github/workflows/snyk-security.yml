@@ -30,11 +30,7 @@ jobs:
           ls -al
           pwd
           
-      - name: Expose report
-        uses: actions/upload-artifact@v2
-        with:
-         name: SARIF results
-         path: ${{ steps.snyk-run.outputs.sarif }}
+      
          
       - name: Upload the SARIF file
         uses: github/codeql-action/upload-sarif@v2
